@@ -2,7 +2,12 @@
 
 Selamat datang di dokumentasi aplikasi Book App, aplikasi berbasis Flutter yang mengintegrasikan data buku dari API publik https://gutendex.com/books. Dokumen ini memberikan panduan penggunaan dan deskripsi fungsionalitas
 
-## Getting Started
+## Panduan Penggunaan Aplikasi
+
+### Instalasi Dependensi
+
+Untuk menjalankan aplikasi ini, pastikan lingkungan pengembangan Flutter dan Dart telah terinstal pada sistem Anda. Verifikasi versi Flutter dengan perintah berikut:
+flutter --version
 
 This project is a starting point for a Flutter application.
 

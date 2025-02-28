@@ -15,10 +15,11 @@ void main() {
       apiService = ApiService();
     });
 
+    // Test untuk fetchBooks
     test(
       'fetchBooks returns BookList if HTTP call completes successfully',
       () async {
-        // Mock response sukses
+        // Mock response sukses dengan status code 200
         when(
           mockClient.get(
             Uri.parse('https://gutendex.com/books?mime_type=text/html&page=1'),
@@ -50,6 +51,7 @@ void main() {
     );
 
     test('fetchBooks throws Exception on non-200 status', () async {
+      // Mock response dengan status code 404
       when(
         mockClient.get(
           Uri.parse('https://gutendex.com/books?mime_type=text/html&page=1'),
@@ -59,7 +61,6 @@ void main() {
       expect(() => apiService.fetchBooks(page: 1), throwsException);
     });
 
-    // Test untuk searchBooks
     test(
       'searchBooks returns BookList if HTTP call completes successfully',
       () async {
@@ -102,12 +103,11 @@ void main() {
             'https://gutendex.com/books?search=test&mime_type=text/html&page=1',
           ),
         ),
-      ).thenAnswer((_) async => http.Response('Error', 401));
+      ).thenAnswer((_) async => http.Response('Error', 400));
 
       expect(() => apiService.searchBooks('test', page: 1), throwsException);
     });
 
-    // Test untuk fetchBookDetail
     test(
       'fetchBookDetail returns Book if HTTP call completes successfully',
       () async {
@@ -136,7 +136,10 @@ void main() {
         mockClient.get(Uri.parse('https://gutendex.com/books/26184')),
       ).thenAnswer((_) async => http.Response('Error', 404));
 
-      expect(() => apiService.fetchBookDetail(26184), throwsException);
+      await expectLater(
+        () => apiService.fetchBookDetail(26184),
+        throwsException,
+      );
     });
   });
 }

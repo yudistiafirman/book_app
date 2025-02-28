@@ -15,11 +15,9 @@ void main() {
       apiService = ApiService();
     });
 
-    // Test untuk fetchBooks
     test(
       'fetchBooks returns BookList if HTTP call completes successfully',
       () async {
-        // Mock response sukses dengan status code 200
         when(
           mockClient.get(
             Uri.parse('https://gutendex.com/books?mime_type=text/html&page=1'),

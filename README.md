@@ -7,7 +7,7 @@ Selamat datang di dokumentasi aplikasi Book App, aplikasi berbasis Flutter yang 
 ### Instalasi Dependensi
 
 Untuk menjalankan aplikasi ini, pastikan lingkungan pengembangan Flutter dan Dart telah terinstal pada sistem Anda. Verifikasi versi Flutter dengan perintah berikut:
-flutter --version
+```flutter pub get```
 
 This project is a starting point for a Flutter application.
 

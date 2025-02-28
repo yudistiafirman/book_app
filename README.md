@@ -20,7 +20,7 @@ Perintah ini akan menginstal paket-paket yang diperlukan, seperti:
 - provider (untuk manajemen state).
 - http (untuk pengambilan data dari API).
 - cached_network_image (untuk memuat gambar dari internet).
-- flutter toast (untuk menampilkan toast)
+- fluttertoast (untuk menampilkan toast)
 
 ### Running Aplikasi
 

@@ -55,7 +55,7 @@ void main() {
         mockClient.get(
           Uri.parse('https://gutendex.com/books?mime_type=text/html&page=1'),
         ),
-      ).thenAnswer((_) async => http.Response('Error', HttpStatus.notFound));
+      ).thenAnswer((_) async => http.Response('Error', 404));
 
       expect(() => apiService.fetchBooks(page: 1), throwsException);
     });

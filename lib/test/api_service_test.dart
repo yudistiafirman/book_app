@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
-import 'package:book_app/models/book.dart';
 import 'package:book_app/services/api_service.dart';
 
 class MockClient extends Mock implements http.Client {}
@@ -85,7 +84,7 @@ void main() {
                 }
               ]
             }
-          ''', HttpStatus.ok),
+          ''', 200),
         );
 
         final result = await apiService.searchBooks('test', page: 1);
@@ -103,7 +102,7 @@ void main() {
             'https://gutendex.com/books?search=test&mime_type=text/html&page=1',
           ),
         ),
-      ).thenAnswer((_) async => http.Response('Error', HttpStatus.badRequest));
+      ).thenAnswer((_) async => http.Response('Error', 401));
 
       expect(() => apiService.searchBooks('test', page: 1), throwsException);
     });

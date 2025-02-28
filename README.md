@@ -1,6 +1,6 @@
-# book_app
+# Dokumentasi Aplikasi Book App
 
-A new Flutter project.
+Selamat datang di dokumentasi aplikasi Book App, aplikasi berbasis Flutter yang mengintegrasikan data buku dari API publik https://gutendex.com/books. Dokumen ini memberikan panduan penggunaan dan deskripsi fungsionalitas
 
 ## Getting Started
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:book_app/models/book.dart';
 import 'package:book_app/services/api_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
@@ -28,7 +29,13 @@ class SearchProvider with ChangeNotifier {
       final bookList = await _apiService.searchBooks(query);
       _searchResults = bookList.results;
     } catch (e) {
-      print('Error searching books: $e');
+      Fluttertoast.showToast(
+        msg: 'Gagal mencari buku: $e',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
       _searchResults.clear();
     } finally {
       _isSearching = false;

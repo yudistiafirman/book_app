@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:book_app/models/book.dart';
 import 'package:book_app/services/api_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BookProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
@@ -22,7 +23,13 @@ class BookProvider with ChangeNotifier {
       _nextUrl = bookList.next;
       _currentPage++;
     } catch (e) {
-      print('Error fetching books: $e');
+      Fluttertoast.showToast(
+        msg: 'Gagal memuat daftar buku: $e',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
     } finally {
       _isLoading = false;
       notifyListeners();

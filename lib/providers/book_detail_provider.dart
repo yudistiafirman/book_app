@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:book_app/models/book.dart';
 import 'package:book_app/services/api_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BookDetailProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
@@ -18,7 +19,13 @@ class BookDetailProvider with ChangeNotifier {
       final book = await _apiService.fetchBookDetail(id);
       _bookDetails[id] = book;
     } catch (e) {
-      print('Error fetching book detail: $e');
+      Fluttertoast.showToast(
+        msg: 'Gagal memuat detail buku: $e',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
     } finally {
       _isDetailLoading = false;
       notifyListeners();
